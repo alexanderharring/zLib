@@ -9,7 +9,7 @@ zLib is a package for Nim that has useful methods and function
 
 Returns the whole file as a string.
 
-```
+```nim
 getFileContentsAsString(fileName: string): string
 ```
 
@@ -18,7 +18,7 @@ getFileContentsAsString(fileName: string): string
 
 Returns the file by each line, in a string
 
-```
+```nim
 getFileLines(fileName: string): seq[string]
 ```
 
