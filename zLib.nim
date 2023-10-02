@@ -1,4 +1,4 @@
-proc getFileConentsAsString*(fileName: string): string =
+proc getFileContentsAsString*(fileName: string): string =
     let gotFile = open(fileName)
 
     return gotFile.readAll
@@ -10,6 +10,6 @@ proc getFileLines*(filename: string): seq[string] =
 
     for line in gotFile.lines:
         mainSeq.add(line)
-        
+
     return mainSeq
 
