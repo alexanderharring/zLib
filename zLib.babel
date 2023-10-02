@@ -1,11 +1,11 @@
 [Package]
-name          = "zUtils"
-version       = "0.1.0"
+name          = "zLib"
+version       = "1.0.1"
 author        = "a-harring"
 description   = "Test"
 license       = "MIT"
 
-skipDirs = "zUtils"
+skipDirs = "zLib"
 
 [Deps]
 Requires: "nimrod >= 0.9.2"
