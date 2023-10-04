@@ -14,11 +14,20 @@ getFileContentsAsString(fileName: string): string
 ```
 
 
-### Getting the sequence of strings
+### Getting the file as a sequence of strings
 
 Returns the file by each line, in a string
 
 ```nim
 getFileLines(fileName: string): seq[string]
 ```
+
+### Parsing a string of nested lists
+
+Returns a custom list type
+
+```nim
+parseSeq*(toBeParsed: string, delim: string = ","): list =
+```
+
 
