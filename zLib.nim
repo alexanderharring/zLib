@@ -162,7 +162,7 @@ proc showConnections*(n: node) =
     var subS = "("
 
     for ind, subnode in n.weightedConnections:
-        if ind == n.connections.high:
+        if ind == n.weightedConnections.high:
             subS &= $ind & ": {" & $subnode[0].value & " -> " & $subnode[1] & "}"
         else:
             subS &= $ind & ": {" & $subnode[0].value & " -> " & $subnode[1] & "}" & ", "
