@@ -129,3 +129,54 @@ proc visualiseList*(ls: list) =
         output("]")
 
     recursiveShow(ls.sublist[0])
+
+
+type
+    node = ref object
+        value: int
+        connections: seq[node]
+        weightedConnections: seq[(node, int)]
+
+proc connect*(parent: node, child: node) =
+    parent.connections.add(child)
+
+proc newNode*(val: int): node =
+    return node(value: val)
+
+proc showConnections*(n: node) =
+    # for nd in n.connections
+
+    var mainS = "("
+
+    for ind, subNode in n.connections:
+        if ind == n.connections.high:
+            mainS &= $ind & ": " & $subNode.value
+        else:
+            mainS &= $ind & ": " & $subNode.value & ", "
+
+    if (n.connections.len > 0):
+        mainS &= ")"
+        echo "Unweighted Connections: "
+        echo mainS
+
+    var subS = "("
+
+    for ind, subnode in n.weightedConnections:
+        if ind == n.connections.high:
+            subS &= $ind & ": {" & $subnode[0].value & " -> " & $subnode[1] & "}"
+        else:
+            subS &= $ind & ": {" & $subnode[0].value & " -> " & $subnode[1] & "}" & ", "
+
+    if (n.weightedConnections.len > 0):
+        subS &= ")"
+        echo "Weighted Connections: "
+        echo subS
+
+
+proc connectWeighted*(parent: node, child: node, weight: int) =
+    parent.weightedConnections.add((child, weight))
+
+
+
+
+
