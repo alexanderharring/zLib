@@ -134,6 +134,7 @@ proc visualiseList*(ls: list) =
 type
     node* = ref object
         value: int
+        tag: string
         connections: seq[node]
         weightedConnections: seq[(node, int)]
 
