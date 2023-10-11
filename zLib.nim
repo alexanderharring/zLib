@@ -176,10 +176,6 @@ proc showConnections*(n: node) =
 proc connectWeighted*(parent: node, child: node, weight: int) =
     parent.weightedConnections.add((child, weight))
 
-proc getConnectedSelection*(n: node): (seq[node], seq[node, int]) =
-    return (unweighted: n.connections, weighted: n.weightedConnections)
-
-
 
 
 
