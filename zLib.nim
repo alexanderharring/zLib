@@ -1,4 +1,5 @@
 import std/strutils
+import math
 
 type
     list = ref object
@@ -133,16 +134,22 @@ proc visualiseList*(ls: list) =
 
 type
     node* = ref object
-        value: int
-        tag: string
-        connections: seq[node]
-        weightedConnections: seq[(node, int)]
+        value*: int
+        tag*: string
+        connections*: seq[node]
+        weightedConnections*: seq[(node, int)]
 
 proc connect*(parent: node, child: node) =
     parent.connections.add(child)
 
-proc newNode*(val: int): node =
-    return node(value: val)
+proc newNode*(): node =
+    return node()
+
+proc setValue*(n: node, val: int) =
+    n.value = val
+
+proc setValue*(n: node, val: string) =
+    n.tag = val
 
 proc showConnections*(n: node) =
     # for nd in n.connections
@@ -177,6 +184,26 @@ proc showConnections*(n: node) =
 proc connectWeighted*(parent: node, child: node, weight: int) =
     parent.weightedConnections.add((child, weight))
 
+proc max*(nums: varargs[int]): int =
+    result = nums[0]
 
+    for n in nums:
+        if n > result:
+            result = n
 
+proc echobin*(x: int) =
+    if x == 0:
+        echo "0"
+    else:
+        let length = floor(log2((float64)x)) + 1
+
+        echo x.toBin((int)length)
+
+proc binInt*(x: int): int =
+    if x == 0:
+        return 0
+    else:
+        let length = floor(log2((float64)x)) + 1
+
+        return parseInt(x.toBin((int)length))
 
