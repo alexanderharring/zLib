@@ -207,3 +207,42 @@ proc binInt*(x: int): int =
 
         return parseInt(x.toBin((int)length))
 
+proc createGrid*(x: int, y: int): seq[seq[int]] =
+    var mainList: seq[seq[int]]
+
+    for xx in 1..x:
+        var cList: seq[int]
+        for yy in 1..y:
+            cList.add(0)
+        mainList.add(cList)
+
+    return mainList
+
+proc getCharSubsets*(mainString: string, excludeEmpty = false): seq[string] =
+
+    proc findSubset(mainArray: string, resultArray: var seq[string], subset: var string, index: int) =
+        resultArray.add(subset)
+
+        for i in index..(mainArray.len - 1):
+
+            subset &= mainArray[i]
+
+            findSubset(mainArray, resultArray, subset, i + 1)
+
+            subset = subset[0..^2]
+
+
+
+    var subset = ""
+    var resultArray: seq[string] = @[]
+    var index = 0
+
+    findSubset(mainString, resultArray, subset, index)
+
+    if excludeEmpty:
+        for ind, st in resultArray:
+            if st == "":
+                resultArray.delete(ind)
+                break
+
+    return resultArray
