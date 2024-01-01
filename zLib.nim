@@ -247,7 +247,7 @@ proc getCharSubsets*(mainString: string, excludeEmpty = false): seq[string] =
 
     return resultArray
 
-iterator choose*[T](a: openarray[T], num_choose: int): seq[T] =
+iterator combs*[T](a: openarray[T], num_choose: int): seq[T] =
   var
     chosen = newSeqOfCap[T](num_choose)
     i = 0
